@@ -1,5 +1,5 @@
 {
-    "name": "miq/erpnext-api",
+    "name": "miq/erpnext-api-lib",
     "description": "Entities and API library for ERPNext",
     "type": "library",
     "license": "MIT",
