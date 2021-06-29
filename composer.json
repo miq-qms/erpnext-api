@@ -1,0 +1,19 @@
+{
+    "name": "miq/erpnext-api",
+    "description": "Entities and API library for ERPNext",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Miq\\ErpnextApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Konstantin Tuemmler",
+            "email": "konstantin.tuemmler@miq.com.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
