@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Serializer;
 
 abstract class AbstractService
 {
-    protected static Serializer $_serializer;
+    protected static ?Serializer $_serializer = null;
 
     /**
      * Returns the base string for api access (e.g. /item or something else)
@@ -23,6 +23,7 @@ abstract class AbstractService
     abstract protected function getBaseRoute(): string;
 
     public string $baseUrl = 'http://localhost:8000';
+    public string $proxy   = '';
 
     protected function getBaseUrl(): string {
         return $this->baseUrl;
@@ -41,6 +42,7 @@ abstract class AbstractService
         curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
         curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
 
         return $ch;
     }
