@@ -5,7 +5,6 @@ namespace Miq\ErpnextApi\Service;
 use Miq\ErpnextApi\Exception\ApiException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -88,19 +87,6 @@ abstract class AbstractService
     protected function POST(string $payload)
     {
         $ch = $this->curlInit( $this->getBaseUrl().$this->getBaseRoute());
-        curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
-        curl_setopt( $ch, CURLOPT_POST, true );
-        return $this->curlExec($ch);
-    }
-
-    /**
-     * @param string $payload
-     * @return bool|string
-     * @throws ApiException
-     */
-    protected function POST_MANY(string $payload)
-    {
-        $ch = $this->curlInit( $this->getBaseUrl().$this->getBaseRoute().'/many');
         curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
         curl_setopt( $ch, CURLOPT_POST, true );
         return $this->curlExec($ch);

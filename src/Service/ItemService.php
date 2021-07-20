@@ -4,11 +4,6 @@ namespace Miq\ErpnextApi\Service;
 
 use Miq\ErpnextApi\Entity\Item;
 use Miq\ErpnextApi\Exception\ApiException;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class ItemService extends AbstractService implements ServiceInterface
 {
@@ -29,9 +24,8 @@ class ItemService extends AbstractService implements ServiceInterface
      */
     public function add(Item $item): ?Item
     {
-        $serializer = $this->getSerializer();
-
-        return $serializer->deserialize($this->POST($serializer->serialize($item, 'json')), Item::class, 'json');
+        return $this->getSerializer()
+                    ->deserialize($this->POST($this->getSerializer()->serialize($item, 'json')), Item::class, 'json');
     }
 
     /**
@@ -39,10 +33,9 @@ class ItemService extends AbstractService implements ServiceInterface
      * @return Item
      * @throws ApiException
      */
-    public function addMany(array $items)
+    public function addMany(array $items): Item
     {
-        $serializer = $this->getSerializer();
-
-        return $serializer->deserialize($this->POST_MANY($serializer->serialize($items, 'json')), Item::class, 'json');
+        return $this->getSerializer()
+                    ->deserialize($this->POST($this->getSerializer()->serialize($items, 'json')), Item::class, 'json');
     }
 }
