@@ -23,18 +23,18 @@ class Item
     private string $name;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(name="creation", type="datetime", nullable=true)
      */
-    private ?DateTime $creation;
+    private ?DateTimeInterface $creation;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(name="modified", type="datetime", nullable=true)
      */
-    private ?DateTime $modified;
+    private ?DateTimeInterface $modified;
 
     /**
      * @var string|null
@@ -255,7 +255,7 @@ class Item
     private $shelfLifeInDays = '0';
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(name="end_of_life", type="date", nullable=true, options={"default"="2099-12-31"})
      */
