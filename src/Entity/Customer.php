@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace Miq\ErpnextApi\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Miq\ErpnextApi\Traits\DefaultTrait;
