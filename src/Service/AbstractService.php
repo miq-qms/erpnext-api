@@ -133,4 +133,17 @@ abstract class AbstractService
         //return the array
         return $data;
     }
+
+    /**
+     * @param array $items
+     * @return string
+     */
+    public function toJson(array $items): string
+    {
+        $encoders = [new JsonEncoder()];
+        $normalizers = array(new PropertyNormalizer(), new DateTimeNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        return $serializer->serialize($items, 'json');
+    }
 }
