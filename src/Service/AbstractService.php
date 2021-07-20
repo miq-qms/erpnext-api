@@ -22,6 +22,13 @@ abstract class AbstractService
      */
     abstract protected function getBaseRoute(): string;
 
+    /**
+     * Returns the entity name with namespace
+     *
+     * @return string
+     */
+    abstract protected function getEntity(): string;
+
     public string $baseUrl = 'http://localhost:8000';
     public string $proxy   = '';
 
@@ -95,32 +102,30 @@ abstract class AbstractService
     }
 
     /**
-     * @param string $type
      * @return array
      * @throws ApiException
      */
-    protected function GET(string $type): array
+    protected function GET(): array
     {
         $ch             = $this->curlInit( $this->getBaseUrl().$this->getBaseRoute());
         $encoders       = [new JsonEncoder()];
         $normalizers    = array(new DateTimeNormalizer(), new ObjectNormalizer(null, null, null, new ReflectionExtractor()), new ArrayDenormalizer());
         $serializer     = new Serializer($normalizers, $encoders);
 
-        return $serializer->deserialize($this->curlExec($ch), $type, 'json');
+        return $serializer->deserialize($this->curlExec($ch), $this->getEntity().'[]', 'json');
     }
 
     /**
      * @param string $jsonContent
-     * @param string $type
      * @return array
      */
-    public function fromJson(string $jsonContent, string $type): array
+    public function fromJson(string $jsonContent): array
     {
         //deserialization
         $encoders       = [new JsonEncoder()];
         $normalizers    = array(new DateTimeNormalizer(), new ObjectNormalizer(null, null, null, new ReflectionExtractor()), new ArrayDenormalizer());
         $serializer     = new Serializer($normalizers, $encoders);
-        $data           = $serializer->deserialize($jsonContent, $type, 'json');
+        $data           = $serializer->deserialize($jsonContent, $this->getEntity(), 'json');
         //if there is only one element, convert it to an "array" of elements
         if(!is_array($data)) {
             $data = [$data];
