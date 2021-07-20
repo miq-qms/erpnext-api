@@ -32,4 +32,15 @@ class TranslationService extends AbstractService implements ServiceInterface
         return $this->getSerializer()
                     ->deserialize($this->POST($this->getSerializer()->serialize($translation, 'json')), Translation::class, 'json');
     }
+
+    /**
+     * @param array $translations
+     * @return Translation
+     * @throws ApiException
+     */
+    public function addMany(array $translations): Translation
+    {
+        return $this->getSerializer()
+            ->deserialize($this->POST($this->getSerializer()->serialize($translations, 'json')), Translation::class, 'json');
+    }
 }
