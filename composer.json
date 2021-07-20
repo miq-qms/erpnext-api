@@ -17,6 +17,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.3",
-        "doctrine/orm": ">=3.0"
+        "doctrine/orm": ">=2.9"
     }
 }
