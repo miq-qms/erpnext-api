@@ -6,7 +6,12 @@ namespace Miq\ErpnextApi\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Miq\ErpnextApi\Traits\DefaultTrait;
-
+/**
+ * Version
+ *
+ * @ORM\Table(name="tabVersion", indexes={@ORM\Index(name="parent", columns={"parent"}), @ORM\Index(name="ref_doctype_docname_index", columns={"ref_doctype", "docname"}), @ORM\Index(name="modified", columns={"modified"})})
+ * @ORM\Entity
+ */
 class Version
 {
 
