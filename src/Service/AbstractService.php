@@ -108,4 +108,24 @@ abstract class AbstractService
 
         return $serializer->deserialize($this->curlExec($ch), $type, 'json');
     }
+
+    /**
+     * @param string $jsonContent
+     * @param string $type
+     * @return array
+     */
+    public function fromJson(string $jsonContent, string $type): array
+    {
+        //deserialization
+        $encoders       = [new JsonEncoder()];
+        $normalizers    = array(new DateTimeNormalizer(), new ObjectNormalizer(null, null, null, new ReflectionExtractor()), new ArrayDenormalizer());
+        $serializer     = new Serializer($normalizers, $encoders);
+        $data           = $serializer->deserialize($jsonContent, $type, 'json');
+        //if there is only one element, convert it to an "array" of elements
+        if(!is_array($data)) {
+            $data = [$data];
+        }
+        //return the array
+        return $data;
+    }
 }
