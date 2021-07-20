@@ -8,13 +8,14 @@ use Miq\ErpnextApi\Exception\ApiException;
 class ItemService extends AbstractService implements ServiceInterface
 {
     function getBaseRoute(): string {  return '/item'; }
+    function getEntity(): string {  return Item::class; }
 
     /**
      * @return array
      * @throws ApiException
      */
     public function fetch(): array {
-        return $this->GET('Miq\ErpnextApi\Entity\Item[]');
+        return $this->GET();
     }
 
     /**

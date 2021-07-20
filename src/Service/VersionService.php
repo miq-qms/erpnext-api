@@ -7,14 +7,15 @@ use Miq\ErpnextApi\Exception\ApiException;
 
 class VersionService extends AbstractService implements ServiceInterface
 {
-    function getBaseRoute(): string {  return '/version'; }
+    protected function getBaseRoute(): string {  return '/version'; }
+    protected function getEntity(): string {  return Version::class; }
 
     /**
      * @return array
      * @throws ApiException
      */
     public function fetch(): array {
-        return $this->GET('Miq\ErpnextApi\Entity\Version[]');
+        return $this->GET();
     }
 
     /**

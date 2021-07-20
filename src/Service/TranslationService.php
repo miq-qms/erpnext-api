@@ -8,10 +8,8 @@ use Miq\ErpnextApi\Exception\ApiException;
 class TranslationService extends AbstractService implements ServiceInterface
 {
 
-    protected function getBaseRoute(): string
-    {
-        return '/translation';
-    }
+    protected function getBaseRoute(): string { return '/translation'; }
+    protected function getEntity(): string { return Translation::class; }
 
     /**
      * @return array
@@ -19,7 +17,7 @@ class TranslationService extends AbstractService implements ServiceInterface
      */
     function fetch(): array
     {
-        return $this->GET('Miq\ErpnextApi\Entity\Translation[]');
+        return $this->GET();
     }
 
     /**
@@ -43,4 +41,6 @@ class TranslationService extends AbstractService implements ServiceInterface
         return $this->getSerializer()
             ->deserialize($this->POST($this->getSerializer()->serialize($translations, 'json')), Translation::class, 'json');
     }
+
+
 }
