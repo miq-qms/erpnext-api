@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace Miq\ErpnextApi\Entity;
 
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
