@@ -2,9 +2,10 @@
 
 namespace Miq\ErpnextApi\Entity;
 
-use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Miq\ErpnextApi\Traits\DefaultTrait;
+
 /**
  * Tabitem
  *
@@ -14,830 +15,615 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Item
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=140, nullable=false)
-     * @ORM\Id
-     */
-    private string $name;
+    use DefaultTrait;
 
-    /**
-     * @var DateTimeInterface|null
-     *
-     * @ORM\Column(name="creation", type="datetime", nullable=true)
-     */
-    private ?DateTimeInterface $creation;
-
-    /**
-     * @var DateTimeInterface|null
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=true)
-     */
-    private ?DateTimeInterface $modified;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="modified_by", type="string", length=140, nullable=true)
-     */
-    private ?string $modifiedBy = "Administrator";
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="owner", type="string", length=140, nullable=true)
-     */
-    private ?string $owner = "Administrator";
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="docstatus", type="integer", nullable=false)
-     */
-    private $docstatus = '0';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parent", type="string", length=140, nullable=true)
-     */
-    private $parent;
-
-    /**
-     * @var string|null
-     *
-     *
-     * @ORM\Column(name="parentfield", type="string", length=140, nullable=true)
-     */
-    private $parentfield;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parenttype", type="string", length=140, nullable=true)
-     */
-    private $parenttype;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idx", type="integer", nullable=false)
-     */
-    private $idx = '0';
-
+    //region properties
     /**
      * @var string|null
      *
      * @ORM\Column(name="naming_series", type="string", length=140, nullable=true)
      */
-    private $namingSeries;
+    private ?string $namingSeries;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="item_code", type="string", length=140, nullable=true)
      */
-    private $itemCode;
+    private ?string $itemCode;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="variant_of", type="string", length=140, nullable=true)
      */
-    private $variantOf;
+    private ?string $variantOf;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="item_name", type="string", length=140, nullable=true)
      */
-    private $itemName;
+    private ?string $itemName;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="item_group", type="string", length=140, nullable=true)
      */
-    private $itemGroup;
+    private ?string $itemGroup;
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_item_from_hub", type="integer", nullable=false)
      */
-    private $isItemFromHub = '0';
+    private int $isItemFromHub = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="stock_uom", type="string", length=140, nullable=true)
      */
-    private $stockUom;
+    private ?string $stockUom;
 
     /**
      * @var int
      *
      * @ORM\Column(name="disabled", type="integer", nullable=false)
      */
-    private $disabled = '0';
+    private int $disabled = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="allow_alternative_item", type="integer", nullable=false)
      */
-    private $allowAlternativeItem = '0';
+    private int $allowAlternativeItem = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_stock_item", type="integer", nullable=false, options={"default"="1"})
      */
-    private $isStockItem = 1;
+    private int $isStockItem = 1;
 
     /**
      * @var int
      *
      * @ORM\Column(name="include_item_in_manufacturing", type="integer", nullable=false, options={"default"="1"})
      */
-    private $includeItemInManufacturing = 1;
+    private int $includeItemInManufacturing = 1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="opening_stock", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $openingStock = '0.000000';
+    private string $openingStock = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="valuation_rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $valuationRate = '0.000000';
+    private string $valuationRate = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="standard_rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $standardRate = '0.000000';
+    private string $standardRate = '0.000000';
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_fixed_asset", type="integer", nullable=false)
      */
-    private $isFixedAsset = '0';
+    private int $isFixedAsset = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="auto_create_assets", type="integer", nullable=false)
      */
-    private $autoCreateAssets = '0';
+    private int $autoCreateAssets = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="asset_category", type="string", length=140, nullable=true)
      */
-    private $assetCategory;
+    private ?string $assetCategory;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="asset_naming_series", type="string", length=140, nullable=true)
      */
-    private $assetNamingSeries;
+    private ?string $assetNamingSeries;
 
     /**
      * @var string
      *
      * @ORM\Column(name="over_delivery_receipt_allowance", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $overDeliveryReceiptAllowance = '0.000000';
+    private string $overDeliveryReceiptAllowance = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="over_billing_allowance", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $overBillingAllowance = '0.000000';
+    private string $overBillingAllowance = '0.000000';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="image", type="text", length=65535, nullable=true)
      */
-    private $image;
+    private ?string $image;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="brand", type="string", length=140, nullable=true)
      */
-    private $brand;
+    private ?string $brand;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="description", type="text", length=0, nullable=true)
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @var int
      *
      * @ORM\Column(name="shelf_life_in_days", type="integer", nullable=false)
      */
-    private $shelfLifeInDays = '0';
+    private int $shelfLifeInDays = 0;
 
     /**
      * @var DateTimeInterface|null
      *
      * @ORM\Column(name="end_of_life", type="date", nullable=true, options={"default"="2099-12-31"})
      */
-    private $endOfLife = null;
+    private ?DateTimeInterface $endOfLife = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="default_material_request_type", type="string", length=140, nullable=true, options={"default"="Purchase"})
      */
-    private $defaultMaterialRequestType = 'Purchase';
+    private ?string $defaultMaterialRequestType = 'Purchase';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="valuation_method", type="string", length=140, nullable=true)
      */
-    private $valuationMethod;
+    private ?string $valuationMethod;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="warranty_period", type="string", length=140, nullable=true)
      */
-    private $warrantyPeriod;
+    private ?string $warrantyPeriod;
 
     /**
      * @var string
      *
      * @ORM\Column(name="weight_per_unit", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $weightPerUnit = '0.000000';
+    private string $weightPerUnit = '0.000000';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="weight_uom", type="string", length=140, nullable=true)
      */
-    private $weightUom;
+    private ?string $weightUom;
 
     /**
      * @var int
      *
      * @ORM\Column(name="has_batch_no", type="integer", nullable=false)
      */
-    private $hasBatchNo = '0';
+    private int $hasBatchNo = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="create_new_batch", type="integer", nullable=false)
      */
-    private $createNewBatch = '0';
+    private int $createNewBatch = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="batch_number_series", type="string", length=140, nullable=true)
      */
-    private $batchNumberSeries;
+    private ?string $batchNumberSeries;
 
     /**
      * @var int
      *
      * @ORM\Column(name="has_expiry_date", type="integer", nullable=false)
      */
-    private $hasExpiryDate = '0';
+    private int $hasExpiryDate = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="retain_sample", type="integer", nullable=false)
      */
-    private $retainSample = '0';
+    private int $retainSample = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="sample_quantity", type="integer", nullable=false)
      */
-    private $sampleQuantity = '0';
+    private int $sampleQuantity = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="has_serial_no", type="integer", nullable=false)
      */
-    private $hasSerialNo = '0';
+    private int $hasSerialNo = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="serial_no_series", type="string", length=140, nullable=true)
      */
-    private $serialNoSeries;
+    private ?string $serialNoSeries;
 
     /**
      * @var int
      *
      * @ORM\Column(name="has_variants", type="integer", nullable=false)
      */
-    private $hasVariants = '0';
+    private int $hasVariants = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="variant_based_on", type="string", length=140, nullable=true, options={"default"="Item Attribute"})
      */
-    private $variantBasedOn = 'Item Attribute';
+    private ?string $variantBasedOn = 'Item Attribute';
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_purchase_item", type="integer", nullable=false, options={"default"="1"})
      */
-    private $isPurchaseItem = 1;
+    private int $isPurchaseItem = 1;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="purchase_uom", type="string", length=140, nullable=true)
      */
-    private $purchaseUom;
+    private ?string $purchaseUom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="min_order_qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $minOrderQty = '0.000000';
+    private string $minOrderQty = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="safety_stock", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $safetyStock = '0.000000';
+    private string $safetyStock = '0.000000';
 
     /**
      * @var int
      *
      * @ORM\Column(name="lead_time_days", type="integer", nullable=false)
      */
-    private $leadTimeDays = '0';
+    private int $leadTimeDays = 0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="last_purchase_rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $lastPurchaseRate = '0.000000';
+    private string $lastPurchaseRate = '0.000000';
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_customer_provided_item", type="integer", nullable=false)
      */
-    private $isCustomerProvidedItem = '0';
+    private int $isCustomerProvidedItem = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="customer", type="string", length=140, nullable=true)
      */
-    private $customer;
+    private ?string $customer;
 
     /**
      * @var int
      *
      * @ORM\Column(name="delivered_by_supplier", type="integer", nullable=false)
      */
-    private $deliveredBySupplier = '0';
+    private int $deliveredBySupplier = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="country_of_origin", type="string", length=140, nullable=true)
      */
-    private $countryOfOrigin;
+    private ?string $countryOfOrigin;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="customs_tariff_number", type="string", length=140, nullable=true)
      */
-    private $customsTariffNumber;
+    private ?string $customsTariffNumber;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="sales_uom", type="string", length=140, nullable=true)
      */
-    private $salesUom;
+    private ?string $salesUom;
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_sales_item", type="integer", nullable=false, options={"default"="1"})
      */
-    private $isSalesItem = 1;
+    private int $isSalesItem = 1;
 
     /**
      * @var string
      *
      * @ORM\Column(name="max_discount", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $maxDiscount = '0.000000';
+    private string $maxDiscount = '0.000000';
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="deferred_revenue_account", type="string", length=140, nullable=true)
      */
-    private $deferredRevenueAccount;
+    private ?string $deferredRevenueAccount;
 
     /**
      * @var int
      *
      * @ORM\Column(name="enable_deferred_revenue", type="integer", nullable=false)
      */
-    private $enableDeferredRevenue = '0';
+    private int $enableDeferredRevenue = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="no_of_months", type="integer", nullable=false)
      */
-    private $noOfMonths = '0';
+    private int $noOfMonths = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="deferred_expense_account", type="string", length=140, nullable=true)
      */
-    private $deferredExpenseAccount;
+    private ?string $deferredExpenseAccount;
 
     /**
      * @var int
      *
      * @ORM\Column(name="enable_deferred_expense", type="integer", nullable=false)
      */
-    private $enableDeferredExpense = '0';
+    private int $enableDeferredExpense = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="no_of_months_exp", type="integer", nullable=false)
      */
-    private $noOfMonthsExp = '0';
+    private int $noOfMonthsExp = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="quality_inspection_template", type="string", length=140, nullable=true)
      */
-    private $qualityInspectionTemplate;
+    private ?string $qualityInspectionTemplate;
 
     /**
      * @var int
      *
      * @ORM\Column(name="inspection_required_before_purchase", type="integer", nullable=false)
      */
-    private $inspectionRequiredBeforePurchase = '0';
+    private int $inspectionRequiredBeforePurchase = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="inspection_required_before_delivery", type="integer", nullable=false)
      */
-    private $inspectionRequiredBeforeDelivery = '0';
+    private int $inspectionRequiredBeforeDelivery = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="default_bom", type="string", length=140, nullable=true)
      */
-    private $defaultBom;
+    private ?string $defaultBom;
 
     /**
      * @var int
      *
      * @ORM\Column(name="is_sub_contracted_item", type="integer", nullable=false)
      */
-    private $isSubContractedItem = '0';
+    private int $isSubContractedItem = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="customer_code", type="string", length=140, nullable=true)
      */
-    private $customerCode;
+    private ?string $customerCode;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="default_item_manufacturer", type="string", length=140, nullable=true)
      */
-    private $defaultItemManufacturer;
+    private ?string $defaultItemManufacturer;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="default_manufacturer_part_no", type="string", length=140, nullable=true)
      */
-    private $defaultManufacturerPartNo;
+    private ?string $defaultManufacturerPartNo;
 
     /**
      * @var int
      *
      * @ORM\Column(name="show_in_website", type="integer", nullable=false)
      */
-    private $showInWebsite = '0';
+    private int $showInWebsite = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="show_variant_in_website", type="integer", nullable=false)
      */
-    private $showVariantInWebsite = '0';
+    private int $showVariantInWebsite = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="route", type="text", length=65535, nullable=true)
      */
-    private $route;
+    private ?string $route;
 
     /**
      * @var int
      *
      * @ORM\Column(name="weightage", type="integer", nullable=false)
      */
-    private $weightage = 0;
+    private int $weightage = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="slideshow", type="string", length=140, nullable=true)
      */
-    private $slideshow;
+    private ?string $slideshow;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="website_image", type="text", length=65535, nullable=true)
      */
-    private $websiteImage;
+    private ?string $websiteImage;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="website_image_alt", type="string", length=140, nullable=true)
      */
-    private $websiteImageAlt;
+    private ?string $websiteImageAlt;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="thumbnail", type="string", length=140, nullable=true)
      */
-    private $thumbnail;
+    private ?string $thumbnail;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="website_warehouse", type="string", length=140, nullable=true)
      */
-    private $websiteWarehouse;
+    private ?string $websiteWarehouse;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="web_long_description", type="text", length=0, nullable=true)
      */
-    private $webLongDescription;
+    private ?string $webLongDescription;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="website_content", type="text", length=0, nullable=true)
      */
-    private $websiteContent;
+    private ?string $websiteContent;
 
     /**
      * @var string
      *
      * @ORM\Column(name="total_projected_qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private $totalProjectedQty = '0.000000';
+    private string $totalProjectedQty = '0.000000';
 
     /**
      * @var int
      *
      * @ORM\Column(name="publish_in_hub", type="integer", nullable=false)
      */
-    private $publishInHub = '0';
+    private int $publishInHub = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="hub_category_to_publish", type="string", length=140, nullable=true)
      */
-    private $hubCategoryToPublish;
+    private ?string $hubCategoryToPublish;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="hub_warehouse", type="string", length=140, nullable=true)
      */
-    private $hubWarehouse;
+    private ?string $hubWarehouse;
 
     /**
      * @var int
      *
      * @ORM\Column(name="synced_with_hub", type="integer", nullable=false)
      */
-    private $syncedWithHub = '0';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_user_tags", type="text", length=65535, nullable=true)
-     */
-    private $userTags;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_comments", type="text", length=65535, nullable=true)
-     */
-    private $comments;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_assign", type="text", length=65535, nullable=true)
-     */
-    private $assign;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_liked_by", type="text", length=65535, nullable=true)
-     */
-    private $likedBy;
+    private int $syncedWithHub = 0;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="hub_sync_id", type="string", length=140, nullable=true)
      */
-    private $hubSyncId;
+    private ?string $hubSyncId;
+    //endregion properties
 
+    //region lifecycleevents
     /**
      * @ORM\PrePersist()
      */
     public function prePersist() {
-        $this->creation = new DateTime();
-        $this->modified = new DateTime();
         if($this->weightage === null) $this->weightage = 0;
     }
+    //endregion
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function getCreation(): ?DateTimeInterface
-    {
-        return $this->creation;
-    }
-
-    public function setCreation(?DateTimeInterface $creation): self
-    {
-        $this->creation = $creation;
-
-        return $this;
-    }
-
-    public function getModified(): ?DateTimeInterface
-    {
-        return $this->modified;
-    }
-
-    public function setModified(?DateTimeInterface $modified): self
-    {
-        $this->modified = $modified;
-
-        return $this;
-    }
-
-    public function getModifiedBy(): ?string
-    {
-        return $this->modifiedBy;
-    }
-
-    public function setModifiedBy(?string $modifiedBy): self
-    {
-        $this->modifiedBy = $modifiedBy;
-
-        return $this;
-    }
-
-    public function getOwner(): ?string
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(?string $owner): self
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    public function getDocstatus(): ?int
-    {
-        return $this->docstatus;
-    }
-
-    public function setDocstatus(int $docstatus): self
-    {
-        $this->docstatus = $docstatus;
-
-        return $this;
-    }
-
-    public function getParent(): ?string
-    {
-        return $this->parent;
-    }
-
-    public function setParent(?string $parent): self
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    public function getParentfield(): ?string
-    {
-        return $this->parentfield;
-    }
-
-    public function setParentfield(?string $parentfield): self
-    {
-        $this->parentfield = $parentfield;
-
-        return $this;
-    }
-
-    public function getParenttype(): ?string
-    {
-        return $this->parenttype;
-    }
-
-    public function setParenttype(?string $parenttype): self
-    {
-        $this->parenttype = $parenttype;
-
-        return $this;
-    }
-
-    public function getIdx(): ?int
-    {
-        return $this->idx;
-    }
-
-    public function setIdx(int $idx): self
-    {
-        $this->idx = $idx;
-
-        return $this;
-    }
-
+    //region getter + setter
     public function getNamingSeries(): ?string
     {
         return $this->namingSeries;
@@ -1846,54 +1632,6 @@ class Item
         return $this;
     }
 
-    public function getUserTags(): ?string
-    {
-        return $this->userTags;
-    }
-
-    public function setUserTags(?string $userTags): self
-    {
-        $this->userTags = $userTags;
-
-        return $this;
-    }
-
-    public function getComments(): ?string
-    {
-        return $this->comments;
-    }
-
-    public function setComments(?string $comments): self
-    {
-        $this->comments = $comments;
-
-        return $this;
-    }
-
-    public function getAssign(): ?string
-    {
-        return $this->assign;
-    }
-
-    public function setAssign(?string $assign): self
-    {
-        $this->assign = $assign;
-
-        return $this;
-    }
-
-    public function getLikedBy(): ?string
-    {
-        return $this->likedBy;
-    }
-
-    public function setLikedBy(?string $likedBy): self
-    {
-        $this->likedBy = $likedBy;
-
-        return $this;
-    }
-
     public function getHubSyncId(): ?string
     {
         return $this->hubSyncId;
@@ -1905,4 +1643,5 @@ class Item
 
         return $this;
     }
+    //endregion
 }

@@ -2,8 +2,8 @@
 
 namespace Miq\ErpnextApi\Entity;
 
-use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Miq\ErpnextApi\Traits\DefaultTrait;
 
 /**
  * Translation
@@ -12,76 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Translation
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=140, nullable=false)
-     */
-    private string $name;
+    use DefaultTrait;
 
-    /**
-     * @var DateTimeInterface
-     *
-     * @ORM\Column(name="creation", type="datetime", nullable=true)
-     */
-    private DateTimeInterface $creation;
-
-    /**
-     * @var DateTimeInterface
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=true)
-     */
-    private DateTimeInterface $modified;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="modified_by", type="string", length=140, nullable=true)
-     */
-    private string $modifiedBy;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="owner", type="string", length=140, nullable=true)
-     */
-    private string $owner;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="docstatus", type="integer", nullable=false)
-     */
-    private int $docstatus = 0;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parent", type="string", length=140, nullable=true)
-     */
-    private ?string $parent = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parentfield", type="string", length=140, nullable=true)
-     */
-    private ?string $parentfield = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parenttype", type="string", length=140, nullable=true)
-     */
-    private ?string $parenttype = null;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idx", type="integer", nullable=false)
-     */
-    private int $idx = 0;
-
+    //region properties
     /**
      * @var int
      *
@@ -130,155 +63,9 @@ class Translation
      * @ORM\Column(name="contribution_docname", type="string", length=140, nullable=true)
      */
     private ?string $contributionDocname = null;
+    //endregion properties
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_user_tags", type="text", length=65535, nullable=true)
-     */
-    private ?string $userTags = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_comments", type="text", length=65535, nullable=true)
-     */
-    private ?string $comments = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_assign", type="text", length=65535, nullable=true)
-     */
-    private ?string $assign = null;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_liked_by", type="text", length=65535, nullable=true)
-     */
-    private ?string $likedBy = null;
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getCreation(): ?DateTimeInterface
-    {
-        return $this->creation;
-    }
-
-    public function setCreation(DateTimeInterface $creation): self
-    {
-        $this->creation = $creation;
-
-        return $this;
-    }
-
-    public function getModified(): DateTimeInterface
-    {
-        return $this->modified;
-    }
-
-    public function setModified(DateTimeInterface $modified): self
-    {
-        $this->modified = $modified;
-
-        return $this;
-    }
-
-    public function getModifiedBy(): ?string
-    {
-        return $this->modifiedBy;
-    }
-
-    public function setModifiedBy(string $modifiedBy): self
-    {
-        $this->modifiedBy = $modifiedBy;
-
-        return $this;
-    }
-
-    public function getOwner(): ?string
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(string $owner): self
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    public function getDocstatus(): ?int
-    {
-        return $this->docstatus;
-    }
-
-    public function setDocstatus(int $docstatus): self
-    {
-        $this->docstatus = $docstatus;
-
-        return $this;
-    }
-
-    public function getParent(): ?string
-    {
-        return $this->parent;
-    }
-
-    public function setParent(?string $parent): self
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    public function getParentfield(): ?string
-    {
-        return $this->parentfield;
-    }
-
-    public function setParentfield(?string $parentfield): self
-    {
-        $this->parentfield = $parentfield;
-
-        return $this;
-    }
-
-    public function getParenttype(): ?string
-    {
-        return $this->parenttype;
-    }
-
-    public function setParenttype(?string $parenttype): self
-    {
-        $this->parenttype = $parenttype;
-
-        return $this;
-    }
-
-    public function getIdx(): ?int
-    {
-        return $this->idx;
-    }
-
-    public function setIdx(int $idx): self
-    {
-        $this->idx = $idx;
-
-        return $this;
-    }
-
+    //region getter + setter
     public function getContributed(): ?int
     {
         return $this->contributed;
@@ -362,52 +149,6 @@ class Translation
 
         return $this;
     }
+    //endregion
 
-    public function getUserTags(): ?string
-    {
-        return $this->userTags;
-    }
-
-    public function setUserTags(?string $userTags): self
-    {
-        $this->userTags = $userTags;
-
-        return $this;
-    }
-
-    public function getComments(): ?string
-    {
-        return $this->comments;
-    }
-
-    public function setComments(?string $comments): self
-    {
-        $this->comments = $comments;
-
-        return $this;
-    }
-
-    public function getAssign(): ?string
-    {
-        return $this->assign;
-    }
-
-    public function setAssign(?string $assign): self
-    {
-        $this->assign = $assign;
-
-        return $this;
-    }
-
-    public function getLikedBy(): ?string
-    {
-        return $this->likedBy;
-    }
-
-    public function setLikedBy(?string $likedBy): self
-    {
-        $this->likedBy = $likedBy;
-
-        return $this;
-    }
 }
