@@ -22,6 +22,8 @@ trait DefaultTrait {
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=140, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private string $name;
 

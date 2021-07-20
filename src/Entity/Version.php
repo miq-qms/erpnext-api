@@ -22,8 +22,6 @@ class Version
      * @var string|null
      *
      * @ORM\Column(name="ref_doctype", type="string", length=140, nullable=true)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private ?string $refDoctype;
 

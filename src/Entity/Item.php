@@ -22,8 +22,6 @@ class Item
      * @var string|null
      *
      * @ORM\Column(name="naming_series", type="string", length=140, nullable=true)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private ?string $namingSeries;
 

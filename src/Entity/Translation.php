@@ -19,8 +19,6 @@ class Translation
      * @var int
      *
      * @ORM\Column(name="contributed", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private int $contributed = 0;
 
