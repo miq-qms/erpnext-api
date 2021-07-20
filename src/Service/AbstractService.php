@@ -5,13 +5,17 @@ namespace Miq\ErpnextApi\Service;
 use Miq\ErpnextApi\Exception\ApiException;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 abstract class AbstractService
 {
+    protected static Serializer $_serializer;
+
     /**
      * Returns the base string for api access (e.g. /item or something else)
      *
@@ -61,6 +65,22 @@ abstract class AbstractService
     }
 
     /**
+     * returns an instance of the serializer and instanciate it once
+     *
+     * @return Serializer
+     */
+    protected function getSerializer(): Serializer
+    {
+        if (self::$_serializer === null || !self::$_serializer instanceof Serializer) {
+            $encoders           = [new JsonEncoder()];
+            $normalizers        = array(new PropertyNormalizer(), new DateTimeNormalizer());
+            self::$_serializer  = new Serializer($normalizers, $encoders);
+        }
+
+        return self::$_serializer;
+    }
+
+    /**
      * @param string $payload
      * @return bool|string
      * @throws ApiException
@@ -74,6 +94,20 @@ abstract class AbstractService
     }
 
     /**
+     * @param string $payload
+     * @return bool|string
+     * @throws ApiException
+     */
+    protected function POST_MANY(string $payload)
+    {
+        $ch = $this->curlInit( $this->getBaseUrl().$this->getBaseRoute().'/many');
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
+        curl_setopt( $ch, CURLOPT_POST, true );
+        return $this->curlExec($ch);
+    }
+
+    /**
+     * @param string $type
      * @return array
      * @throws ApiException
      */
