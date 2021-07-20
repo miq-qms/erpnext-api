@@ -19,8 +19,8 @@
         "php": ">=7.3",
         "doctrine/orm": ">=2.9",
         "ext-curl": "*",
-        "symfony/serializer": "6.0.x-dev",
-        "symfony/property-info": "6.0.x-dev",
-        "symfony/property-access": "6.0.x-dev"
+        "symfony/serializer": "5.3.*",
+        "symfony/property-info": "5.3.*",
+        "symfony/property-access": "5.3.*"
     }
 }
