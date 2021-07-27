@@ -163,7 +163,7 @@ class Item
      *
      * @ORM\Column(name="image", type="text", length=65535, nullable=true)
      */
-    private ?string $image;
+    private ?string $image = null;
 
     /**
      * @var string|null
