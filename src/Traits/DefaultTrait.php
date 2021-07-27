@@ -25,7 +25,7 @@ trait DefaultTrait {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private string $name;
+    private string $name = "";
 
     /**
      * @var DateTimeInterface
