@@ -28,4 +28,15 @@ class FileService extends AbstractService implements ServiceInterface
         return $this->getSerializer()
                     ->deserialize($this->POST($this->getSerializer()->serialize($file, 'json')), File::class, 'json');
     }
+
+    /**
+     * @param array $files
+     * @return File
+     * @throws ApiException
+     */
+    public function addMany(array $files): File
+    {
+        return $this->getSerializer()
+            ->deserialize($this->POST($this->getSerializer()->serialize($files, 'json')), File::class, 'json');
+    }
 }
