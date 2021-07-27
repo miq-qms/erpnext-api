@@ -125,7 +125,7 @@ abstract class AbstractService
         $encoders       = [new JsonEncoder()];
         $normalizers    = array(new DateTimeNormalizer(), new ObjectNormalizer(null, null, null, new ReflectionExtractor()), new ArrayDenormalizer());
         $serializer     = new Serializer($normalizers, $encoders);
-        $data           = $serializer->deserialize($jsonContent, $this->getEntity(), 'json');
+        $data           = $serializer->deserialize($jsonContent, $this->getEntity().'[]', 'json');
         //if there is only one element, convert it to an "array" of elements
         if(!is_array($data)) {
             $data = [$data];
