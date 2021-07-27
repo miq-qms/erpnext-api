@@ -23,6 +23,7 @@ trait DefaultTrait {
      *
      * @ORM\Column(name="name", type="string", length=140, nullable=false)
      * @ORM\Id
+     *
      */
     private string $name = "";
 
