@@ -15,22 +15,22 @@ class File
      * @var string
      *
      */
-    private string $filename;
+    private string $filename = "";
     /**
      * @var string
      * base64 encoded content
      */
-    private string $content;
+    private string $content = "";
 
     /**
-     * @var DateTime
+     * @var ?DateTime
      */
-    private DateTime $lastModified;
+    private ?DateTime $lastModified = null;
 
     /**
      * @var int
      */
-    private int $size;
+    private int $size = 0;
 
     /**
      * @return string
