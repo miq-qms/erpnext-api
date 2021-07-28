@@ -3,6 +3,7 @@
 namespace Miq\ErpnextApi\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Miq\ErpnextApi\Traits\HeadTrait;
 
 /**
  * TabbomItem
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BomItem
 {
+    use HeadTrait;
+
     //region properties
     /**
      * @var string|null
