@@ -37,6 +37,16 @@ abstract class AbstractService
     }
 
     /**
+     * here u can possibly pass optional options to curl
+     * e.g. disable ssl verify in case of letsencrypt
+     *
+     * @return array
+     */
+    protected function getCustomCurlOptions(): array {
+        return [];
+    }
+
+    /**
      * Prepares curl request with some default connection data (can be overridden later)
      *
      * @param string $url
@@ -50,6 +60,11 @@ abstract class AbstractService
         curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
         curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
+        //custom passed options from client
+        foreach ($this->getCustomCurlOptions() as $option => $value) {
+            if(!empty($option))
+                curl_setopt($ch, $option, $value);
+        }
 
         return $ch;
     }
