@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "doctrine/orm": ">=2.9",
         "ext-curl": "*",
         "symfony/serializer": "5.3.*",
