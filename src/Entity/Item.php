@@ -494,40 +494,6 @@ class Item
      */
     private string $totalProjectedQty = '0.000000';
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="publish_in_hub", type="integer", nullable=false)
-     */
-    private int $publishInHub = 0;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="hub_category_to_publish", type="string", length=140, nullable=true)
-     */
-    private ?string $hubCategoryToPublish;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="hub_warehouse", type="string", length=140, nullable=true)
-     */
-    private ?string $hubWarehouse;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="synced_with_hub", type="integer", nullable=false)
-     */
-    private int $syncedWithHub = 0;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="hub_sync_id", type="string", length=140, nullable=true)
-     */
-    private ?string $hubSyncId;
     //endregion properties
 
     //region getter + setter
