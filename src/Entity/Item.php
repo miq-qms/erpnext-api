@@ -54,13 +54,6 @@ class Item
     private ?string $itemGroup;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="is_item_from_hub", type="integer", nullable=false)
-     */
-    private int $isItemFromHub = 0;
-
-    /**
      * @var string|null
      *
      * @ORM\Column(name="stock_uom", type="string", length=140, nullable=true)
@@ -684,17 +677,6 @@ class Item
         return $this;
     }
 
-    public function getIsItemFromHub(): ?int
-    {
-        return $this->isItemFromHub;
-    }
-
-    public function setIsItemFromHub(int $isItemFromHub): self
-    {
-        $this->isItemFromHub = $isItemFromHub;
-
-        return $this;
-    }
 
     public function getStockUom(): ?string
     {
