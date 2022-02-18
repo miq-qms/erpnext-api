@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "280f1996e8050fbfc979f8a5276b54e9",
+    "content-hash": "281cc1eee244157352b240ae2e9207f8",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -271,12 +271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "6b7df3608358cd6707df969f10d01ffa4e537e87"
+                "reference": "5f0233fde07474e32ce932e23e0124b265b55613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6b7df3608358cd6707df969f10d01ffa4e537e87",
-                "reference": "6b7df3608358cd6707df969f10d01ffa4e537e87",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5f0233fde07474e32ce932e23e0124b265b55613",
+                "reference": "5f0233fde07474e32ce932e23e0124b265b55613",
                 "shasum": ""
             },
             "require": {
@@ -291,14 +291,14 @@
             "require-dev": {
                 "doctrine/coding-standard": "9.0.0",
                 "jetbrains/phpstorm-stubs": "2021.1",
-                "phpstan/phpstan": "1.4.0",
+                "phpstan/phpstan": "1.4.6",
                 "phpstan/phpstan-strict-rules": "^1.1",
-                "phpunit/phpunit": "9.5.11",
+                "phpunit/phpunit": "9.5.13",
                 "psalm/plugin-phpunit": "0.16.1",
                 "squizlabs/php_codesniffer": "3.6.2",
                 "symfony/cache": "^5.2|^6.0",
                 "symfony/console": "^2.7|^3.0|^4.0|^5.0|^6.0",
-                "vimeo/psalm": "4.16.1"
+                "vimeo/psalm": "4.20.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -374,7 +374,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-09T08:02:52+00:00"
+            "time": "2022-02-17T20:46:50+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -752,12 +752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/orm.git",
-                "reference": "3a43f924c6966a8ba9c2d9e6fae937ce25106991"
+                "reference": "6b33fa6ddd2e7006e2a16bbfe55f7c35ef0394c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/orm/zipball/3a43f924c6966a8ba9c2d9e6fae937ce25106991",
-                "reference": "3a43f924c6966a8ba9c2d9e6fae937ce25106991",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/6b33fa6ddd2e7006e2a16bbfe55f7c35ef0394c1",
+                "reference": "6b33fa6ddd2e7006e2a16bbfe55f7c35ef0394c1",
                 "shasum": ""
             },
             "require": {
@@ -838,7 +838,7 @@
                 "issues": "https://github.com/doctrine/orm/issues",
                 "source": "https://github.com/doctrine/orm/tree/3.0.x"
             },
-            "time": "2022-02-09T00:05:25+00:00"
+            "time": "2022-02-17T22:38:31+00:00"
         },
         {
             "name": "doctrine/persistence",
@@ -846,12 +846,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "f8af155c1e7963f3d2b4415097d55757bbaa53d8"
+                "reference": "7fea600bf0099d2d200b11e1374f85a6873bcf9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/f8af155c1e7963f3d2b4415097d55757bbaa53d8",
-                "reference": "f8af155c1e7963f3d2b4415097d55757bbaa53d8",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/7fea600bf0099d2d200b11e1374f85a6873bcf9d",
+                "reference": "7fea600bf0099d2d200b11e1374f85a6873bcf9d",
                 "shasum": ""
             },
             "require": {
@@ -924,9 +924,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/2.3.0"
+                "source": "https://github.com/doctrine/persistence/tree/2.4.x"
             },
-            "time": "2022-01-09T19:58:46+00:00"
+            "time": "2022-02-17T11:33:03+00:00"
         },
         {
             "name": "psr/cache",
@@ -1092,12 +1092,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "fe65dc242bba90a99da7d818561e46d4c3349e36"
+                "reference": "e484271ac06cc28a84ec1e885c90f801ebaab76a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/fe65dc242bba90a99da7d818561e46d4c3349e36",
-                "reference": "fe65dc242bba90a99da7d818561e46d4c3349e36",
+                "url": "https://api.github.com/repos/symfony/console/zipball/e484271ac06cc28a84ec1e885c90f801ebaab76a",
+                "reference": "e484271ac06cc28a84ec1e885c90f801ebaab76a",
                 "shasum": ""
             },
             "require": {
@@ -1180,7 +1180,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-08T22:17:58+00:00"
+            "time": "2022-02-10T10:18:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1530,12 +1530,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2114,9 +2114,9 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "ext-curl": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
