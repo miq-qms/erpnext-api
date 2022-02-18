@@ -490,13 +490,6 @@ class Item
     /**
      * @var int
      *
-     * @ORM\Column(name="show_in_website", type="integer", nullable=false)
-     */
-    private int $showInWebsite = 0;
-
-    /**
-     * @var int
-     *
      * @ORM\Column(name="show_variant_in_website", type="integer", nullable=false)
      */
     private int $showVariantInWebsite = 0;
@@ -1418,18 +1411,6 @@ class Item
     public function setDefaultManufacturerPartNo(?string $defaultManufacturerPartNo): self
     {
         $this->defaultManufacturerPartNo = $defaultManufacturerPartNo;
-
-        return $this;
-    }
-
-    public function getShowInWebsite(): ?int
-    {
-        return $this->showInWebsite;
-    }
-
-    public function setShowInWebsite(int $showInWebsite): self
-    {
-        $this->showInWebsite = $showInWebsite;
 
         return $this;
     }
