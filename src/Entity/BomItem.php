@@ -73,11 +73,11 @@ class BomItem
     private ?string $image = null;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $qty = 0.0;
+    private string $qty = '0.000000';
 
     /**
      * @var string|null
@@ -87,67 +87,67 @@ class BomItem
     private ?string $uom = null;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="stock_qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $stockQty = 0.0;
+    private string $stockQty = '0.000000';
 
     /**
-     * @var float|null
+     * @var string|null
      *
      * @ORM\Column(name="stock_uom", type="string", length=140, nullable=true)
      */
-    private ?float $stockUom = null;
+    private ?string $stockUom;
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="conversion_factor", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $conversionFactor = 0.0;
+    private string $conversionFactor = '0.000000';
 
     /**
-     * @var float
+     * @var string
      *
      * @ORM\Column(name="rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $rate = 0.0;
+    private string $rate = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="base_rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $baseRate = 0.0;
+    private string $baseRate = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="amount", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $amount = 0.0;
+    private string $amount = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="base_amount", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $baseAmount = 0.0;
+    private string $baseAmount = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="scrap", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $scrap = 0.0;
+    private string $scrap = '0.000000';
 
     /**
      * @var string
      *
      * @ORM\Column(name="qty_consumed_per_unit", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private float $qtyConsumedPerUnit = 0.0;
+    private string $qtyConsumedPerUnit = '0.000000';
 
     /**
      * @var int
@@ -388,17 +388,17 @@ class BomItem
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getRate(): float
+    public function getRate(): string
     {
         return $this->rate;
     }
 
     /**
-     * @param float $rate
+     * @param string $rate
      */
-    public function setRate(float $rate): void
+    public function setRate(string $rate): void
     {
         $this->rate = $rate;
     }
