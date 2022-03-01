@@ -54,13 +54,6 @@ class Customer
     /**
      * @var string|null
      *
-     * @ORM\Column(name="pan", type="string", length=140, nullable=true)
-     */
-    private ?string $pan;
-
-    /**
-     * @var string|null
-     *
      * @ORM\Column(name="tax_withholding_category", type="string", length=140, nullable=true)
      */
     private ?string $taxWithholdingCategory;
@@ -369,22 +362,6 @@ class Customer
     public function setCustomerType(?string $customerType): void
     {
         $this->customerType = $customerType;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPan(): ?string
-    {
-        return $this->pan;
-    }
-
-    /**
-     * @param string|null $pan
-     */
-    public function setPan(?string $pan): void
-    {
-        $this->pan = $pan;
     }
 
     /**
