@@ -8,7 +8,7 @@ use Miq\ErpnextApi\Traits\HeadTrait;
 /**
  * TabbomItem
  *
- * @ORM\Table(name="tabBOM Item", indexes={@ORM\Index(name="bom_no", columns={"bom_no"}), @ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="item_code", columns={"item_code"}), @ORM\Index(name="parent", columns={"parent"})})
+ * @ORM\Table(name=" `tabBOM Item` ", indexes={@ORM\Index(name="bom_no", columns={"bom_no"}), @ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="item_code", columns={"item_code"}), @ORM\Index(name="parent", columns={"parent"})})
  * @ORM\Entity
  */
 class BomItem
