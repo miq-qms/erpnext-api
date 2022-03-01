@@ -109,13 +109,6 @@ class Supplier
     private ?string $supplierType = 'Company';
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="pan", type="string", length=140, nullable=true)
-     */
-    private ?string $pan;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="allow_purchase_invoice_creation_without_purchase_order", type="integer", nullable=false)
@@ -442,22 +435,6 @@ class Supplier
     public function setSupplierType(?string $supplierType): void
     {
         $this->supplierType = $supplierType;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPan(): ?string
-    {
-        return $this->pan;
-    }
-
-    /**
-     * @param string|null $pan
-     */
-    public function setPan(?string $pan): void
-    {
-        $this->pan = $pan;
     }
 
     /**
