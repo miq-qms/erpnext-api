@@ -56,7 +56,7 @@ class BomItem
      *
      * @ORM\Column(name="allow_alternative_item", type="integer", nullable=false)
      */
-    private $allowAlternativeItem = '0';
+    private int $allowAlternativeItem = 0;
 
     /**
      * @var string|null
@@ -73,11 +73,11 @@ class BomItem
     private ?string $image = null;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $qty = '0.000000';
+    private float $qty = 0.0;
 
     /**
      * @var string|null
@@ -87,67 +87,67 @@ class BomItem
     private ?string $uom = null;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="stock_qty", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $stockQty = '0.000000';
+    private float $stockQty = 0.0;
 
     /**
-     * @var string|null
+     * @var float|null
      *
      * @ORM\Column(name="stock_uom", type="string", length=140, nullable=true)
      */
-    private ?string $stockUom;
+    private ?float $stockUom = null;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="conversion_factor", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $conversionFactor = '0.000000';
+    private float $conversionFactor = 0.0;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $rate = '0.000000';
+    private float $rate = 0.0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="base_rate", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $baseRate = '0.000000';
+    private float $baseRate = 0.0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="amount", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $amount = '0.000000';
+    private float $amount = 0.0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="base_amount", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $baseAmount = '0.000000';
+    private float $baseAmount = 0.0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="scrap", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $scrap = '0.000000';
+    private float $scrap = 0.0;
 
     /**
      * @var string
      *
      * @ORM\Column(name="qty_consumed_per_unit", type="decimal", precision=18, scale=6, nullable=false, options={"default"="0.000000"})
      */
-    private string $qtyConsumedPerUnit = '0.000000';
+    private float $qtyConsumedPerUnit = 0.0;
 
     /**
      * @var int
@@ -262,7 +262,7 @@ class BomItem
     /**
      * @return int
      */
-    public function getAllowAlternativeItem()
+    public function getAllowAlternativeItem(): int
     {
         return $this->allowAlternativeItem;
     }
@@ -270,7 +270,7 @@ class BomItem
     /**
      * @param int $allowAlternativeItem
      */
-    public function setAllowAlternativeItem($allowAlternativeItem): void
+    public function setAllowAlternativeItem(int $allowAlternativeItem): void
     {
         $this->allowAlternativeItem = $allowAlternativeItem;
     }
@@ -388,17 +388,17 @@ class BomItem
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getRate(): string
+    public function getRate(): float
     {
         return $this->rate;
     }
 
     /**
-     * @param string $rate
+     * @param float $rate
      */
-    public function setRate(string $rate): void
+    public function setRate(float $rate): void
     {
         $this->rate = $rate;
     }
