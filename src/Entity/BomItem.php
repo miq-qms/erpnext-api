@@ -166,6 +166,13 @@ class BomItem
     /**
      * @var string|null
      *
+     * @ORM\Column(name="parent", type="string", length=140, nullable=true)
+     */
+    private ?string $parent = null;
+
+    /**
+     * @var string|null
+     *
      * @ORM\Column(name="original_item", type="string", length=140, nullable=true)
      */
     private ?string $originalItem;
@@ -209,6 +216,22 @@ class BomItem
     public function setItemName(?string $itemName): void
     {
         $this->itemName = $itemName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getParent(): ?string
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param string|null $parent
+     */
+    public function setParent(?string $parent): void
+    {
+        $this->parent = $parent;
     }
 
     /**
