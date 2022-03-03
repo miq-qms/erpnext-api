@@ -169,7 +169,19 @@ class BomItem
      * @ORM\Column(name="parent", type="string", length=140, nullable=true)
      */
     private ?string $parent = null;
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="parentfield", type="string", length=140, nullable=true)
+     */
+    private ?string $parentfield = null;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="parenttype", type="string", length=140, nullable=true)
+     */
+    private ?string $parenttype = null;
     /**
      * @var string|null
      *
@@ -217,7 +229,37 @@ class BomItem
     {
         $this->itemName = $itemName;
     }
+    /**
+     * @return string|null
+     */
+    public function getParentfield(): ?string
+    {
+        return $this->parentfield;
+    }
 
+    /**
+     * @param string|null $parentfield
+     */
+    public function setParentfield(?string $parentfield): void
+    {
+        $this->parentfield = $parentfield;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getParenttype(): ?string
+    {
+        return $this->parenttype;
+    }
+
+    /**
+     * @param string|null $parenttype
+     */
+    public function setParenttype(?string $parenttype): void
+    {
+        $this->parenttype = $parenttype;
+    }
     /**
      * @return string|null
      */
