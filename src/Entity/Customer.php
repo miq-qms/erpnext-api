@@ -604,6 +604,7 @@ class Customer
         $this->defaultCurrency = $defaultCurrency;
     }
 
+
     /**
      * @return string|null
      */
