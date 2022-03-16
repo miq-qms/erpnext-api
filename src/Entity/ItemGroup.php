@@ -45,11 +45,25 @@ class ItemGroup
     private int $lft = 0;
 
     /**
-     * @var int
+     * @var string|null
      *
-     * @ORM\Column(name="rgt", type="integer", nullable=false)
+     * @ORM\Column(name="item_group_name", type="string", length=140, nullable=true)
      */
-    private int $rgt = 0;
+    private ?string $itemGroupName;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="parent_item_group", type="string", length=140, nullable=true)
+     */
+    private ?string $parentItemGroup;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="route", type="string", length=140, nullable=true)
+     */
+    private ?string $route;
 
     /**
      * @var string|null
@@ -57,6 +71,13 @@ class ItemGroup
      * @ORM\Column(name="old_parent", type="string", length=140, nullable=true)
      */
     private ?string $oldParent;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rgt", type="integer", nullable=false)
+     */
+    private int $rgt = 0;
 
     /**
      * @return int
@@ -154,4 +175,51 @@ class ItemGroup
         $this->oldParent = $oldParent;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getItemGroupName(): ?string
+    {
+        return $this->itemGroupName;
+    }
+
+    /**
+     * @param string|null $itemGroupName
+     */
+    public function setItemGroupName(?string $itemGroupName): void
+    {
+        $this->itemGroupName = $itemGroupName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getParentItemGroup(): ?string
+    {
+        return $this->parentItemGroup;
+    }
+
+    /**
+     * @param string|null $parentItemGroup
+     */
+    public function setParentItemGroup(?string $parentItemGroup): void
+    {
+        $this->parentItemGroup = $parentItemGroup;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param string|null $route
+     */
+    public function setRoute(?string $route): void
+    {
+        $this->route = $route;
+    }
 }
