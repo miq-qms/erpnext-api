@@ -8,7 +8,7 @@ use Miq\ErpnextApi\Traits\DefaultTrait;
 /**
  * TabitemGroup
  *
- * @ORM\Table(name=" `tabItem Group` ",, uniqueConstraints={@ORM\UniqueConstraint(name="route", columns={"route"}), @ORM\UniqueConstraint(name="item_group_name", columns={"item_group_name"})}, indexes={@ORM\Index(name="rgt", columns={"rgt"}), @ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"}), @ORM\Index(name="lft", columns={"lft"})})
+ * @ORM\Table(name=" `tabItem Group` ", uniqueConstraints={@ORM\UniqueConstraint(name="route", columns={"route"}), @ORM\UniqueConstraint(name="item_group_name", columns={"item_group_name"})}, indexes={@ORM\Index(name="rgt", columns={"rgt"}), @ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"}), @ORM\Index(name="lft", columns={"lft"})})
  * @ORM\Entity
  */
 class ItemGroup
