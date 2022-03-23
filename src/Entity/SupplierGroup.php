@@ -47,7 +47,7 @@ class SupplierGroup
     /**
      * @var string|null
      *
-     * @ORM\Column(name="parent_item_group", type="string", length=140, nullable=true)
+     * @ORM\Column(name="parent_supplier_group", type="string", length=140, nullable=true)
      */
     private ?string $parentSupplierGroup;
 
