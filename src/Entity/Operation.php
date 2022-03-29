@@ -8,7 +8,7 @@ use Miq\ErpnextApi\Traits\DefaultTrait;
 /**
  * Operation
  *
- * @ORM\Table(name="tabOperation", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"})})
+ * @ORM\Table(name="tabOperation", indexes={@ORM\Index(name="modified", columns={"modified"})})
  * @ORM\Entity
  */
 class Operation
