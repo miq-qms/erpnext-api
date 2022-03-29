@@ -14,28 +14,6 @@ class Operation
 {
     use DefaultTrait;
 
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parent", type="string", length=140, nullable=true)
-     */
-    private ?string $parent;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parentfield", type="string", length=140, nullable=true)
-     */
-    private ?string $parentfield;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="parenttype", type="string", length=140, nullable=true)
-     */
-    private ?string $parenttype;
-
     /**
      * @var string|null
      *
@@ -49,54 +27,6 @@ class Operation
      * @ORM\Column(name="description", type="text", length=65535, nullable=true)
      */
     private ?string $description;
-
-    /**
-     * @return string|null
-     */
-    public function getParent(): ?string
-    {
-        return $this->parent;
-    }
-
-    /**
-     * @param string|null $parent
-     */
-    public function setParent(?string $parent): void
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getParentfield(): ?string
-    {
-        return $this->parentfield;
-    }
-
-    /**
-     * @param string|null $parentfield
-     */
-    public function setParentfield(?string $parentfield): void
-    {
-        $this->parentfield = $parentfield;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getParenttype(): ?string
-    {
-        return $this->parenttype;
-    }
-
-    /**
-     * @param string|null $parenttype
-     */
-    public function setParenttype(?string $parenttype): void
-    {
-        $this->parenttype = $parenttype;
-    }
 
     /**
      * @return string|null
