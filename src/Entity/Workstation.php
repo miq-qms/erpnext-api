@@ -79,4 +79,148 @@ class Workstation
      */
     private ?string $description;
 
+    /**
+     * @return string|null
+     */
+    public function getWorkstationName(): ?string
+    {
+        return $this->workstationName;
+    }
+
+    /**
+     * @param string|null $workstationName
+     */
+    public function setWorkstationName(?string $workstationName): void
+    {
+        $this->workstationName = $workstationName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductionCapacity(): int
+    {
+        return $this->productionCapacity;
+    }
+
+    /**
+     * @param int $productionCapacity
+     */
+    public function setProductionCapacity(int $productionCapacity): void
+    {
+        $this->productionCapacity = $productionCapacity;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRateElectricity(): float
+    {
+        return $this->hourRateElectricity;
+    }
+
+    /**
+     * @param float $hourRateElectricity
+     */
+    public function setHourRateElectricity(float $hourRateElectricity): void
+    {
+        $this->hourRateElectricity = $hourRateElectricity;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRateConsumable(): float
+    {
+        return $this->hourRateConsumable;
+    }
+
+    /**
+     * @param float $hourRateConsumable
+     */
+    public function setHourRateConsumable(float $hourRateConsumable): void
+    {
+        $this->hourRateConsumable = $hourRateConsumable;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRateRent(): float
+    {
+        return $this->hourRateRent;
+    }
+
+    /**
+     * @param float $hourRateRent
+     */
+    public function setHourRateRent(float $hourRateRent): void
+    {
+        $this->hourRateRent = $hourRateRent;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRateLabour(): float
+    {
+        return $this->hourRateLabour;
+    }
+
+    /**
+     * @param float $hourRateLabour
+     */
+    public function setHourRateLabour(float $hourRateLabour): void
+    {
+        $this->hourRateLabour = $hourRateLabour;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRate(): float
+    {
+        return $this->hourRate;
+    }
+
+    /**
+     * @param float $hourRate
+     */
+    public function setHourRate(float $hourRate): void
+    {
+        $this->hourRate = $hourRate;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getHolidayList(): ?string
+    {
+        return $this->holidayList;
+    }
+
+    /**
+     * @param string|null $holidayList
+     */
+    public function setHolidayList(?string $holidayList): void
+    {
+        $this->holidayList = $holidayList;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
 }
