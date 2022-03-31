@@ -847,12 +847,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "ba627d89704bf1718dc6efe0ba0140f3b32e651f"
+                "reference": "23c44063e795a822ec43bb063a5688e8c2ec367f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/ba627d89704bf1718dc6efe0ba0140f3b32e651f",
-                "reference": "ba627d89704bf1718dc6efe0ba0140f3b32e651f",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/23c44063e795a822ec43bb063a5688e8c2ec367f",
+                "reference": "23c44063e795a822ec43bb063a5688e8c2ec367f",
                 "shasum": ""
             },
             "require": {
@@ -927,7 +927,7 @@
                 "issues": "https://github.com/doctrine/persistence/issues",
                 "source": "https://github.com/doctrine/persistence/tree/2.5.x"
             },
-            "time": "2022-03-28T11:55:48+00:00"
+            "time": "2022-03-29T12:41:20+00:00"
         },
         {
             "name": "psr/cache",

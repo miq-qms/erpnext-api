@@ -27,32 +27,32 @@ trait HeadTrait {
     private string $name = "";
 
     /**
-     * @var DateTimeInterface
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(name="creation", type="datetime", nullable=true)
      */
-    private DateTimeInterface $creation;
+    private ?DateTimeInterface $creation;
 
     /**
-     * @var DateTimeInterface
+     * @var DateTimeInterface|null
      *
      * @ORM\Column(name="modified", type="datetime", nullable=true)
      */
-    private DateTimeInterface $modified;
+    private ?DateTimeInterface $modified;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="modified_by", type="string", length=140, nullable=true)
      */
-    private string $modifiedBy;
+    private ?string $modifiedBy;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="owner", type="string", length=140, nullable=true)
      */
-    private string $owner;
+    private ?string $owner;
 
     /**
      * @var int
