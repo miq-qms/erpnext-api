@@ -4,88 +4,115 @@ namespace Miq\ErpnextApi\Entity;
 
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Miq\ErpnextApi\Traits\DefaultTrait;
+use Miq\ErpnextApi\Traits\HeadTrait;
 
 /**
- * Supplier
+ * TabbomOperation
  *
- * @ORM\Table(name="tabSupplier", indexes={@ORM\Index(name="parent", columns={"parent"}), @ORM\Index(name="modified", columns={"modified"})})
+ * @ORM\Table(name="tabBOM Operation", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"})})
  * @ORM\Entity
  */
 class BomOperation
 {
-    use DefaultTrait;
-
-    //region properties
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="naming_series", type="string", length=140, nullable=true)
-     */
-    private ?string $namingSeries;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="supplier_name", type="string", length=140, nullable=true)
-     */
-    private ?string $supplierName;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="country", type="string", length=140, nullable=true)
-     */
-    private ?string $country;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="default_bank_account", type="string", length=140, nullable=true)
-     */
-    private ?string $defaultBankAccount;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="tax_id", type="string", length=140, nullable=true)
-     */
-    private ?string $taxId;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="tax_category", type="string", length=140, nullable=true)
-     */
-    private ?string $taxCategory;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="tax_withholding_category", type="string", length=140, nullable=true)
-     */
-    private ?string $taxWithholdingCategory;
+    use HeadTrait;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="is_transporter", type="integer", nullable=false)
+     * @ORM\Column(name="sequence_id", type="integer", nullable=false)
      */
-    private int $isTransporter = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="is_internal_supplier", type="integer", nullable=false)
-     */
-    private int $isInternalSupplier = 0;
+    private int $sequenceId = 0;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="represents_company", type="string", length=140, nullable=true)
+     * @ORM\Column(name="operation", type="string", length=140, nullable=true)
      */
-    private ?string $representsCompany;
+    private ?string $operation;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="workstation", type="string", length=140, nullable=true)
+     */
+    private ?string $workstation;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="time_in_mins", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
+     */
+    private float $timeInMins = 0.000000000;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="fixed_time", type="integer", nullable=false)
+     */
+    private int $fixedTime = 0;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="hour_rate", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
+     */
+    private float $hourRate = 0.000000000;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="base_hour_rate", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
+     */
+    private float $baseHourRate = 0.000000000;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
+     */
+    private float $operatingCost = 0.000000000;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="base_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=5.000000000})
+     */
+    private float $baseOperatingCost = 5.000000000;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="batch_size", type="integer", nullable=false)
+     */
+    private int $batchSize = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="set_cost_based_on_bom_qty", type="integer", nullable=false)
+     */
+    private int $setCostBasedOnBomQty = 0;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cost_per_unit", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     */
+    private float $costPerUnit = 0.000000000;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="base_cost_per_unit", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     */
+    private float $baseCostPerUnit = 0.000000000;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="description", type="text", length=0, nullable=true)
+     */
+    private ?string $description;
 
     /**
      * @var string|null
@@ -97,296 +124,246 @@ class BomOperation
     /**
      * @var string|null
      *
-     * @ORM\Column(name="supplier_group", type="string", length=140, nullable=true)
+     * @ORM\Column(name="parent", type="string", length=140, nullable=true)
      */
-    private ?string $supplierGroup;
+    private ?string $parent;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="supplier_type", type="string", length=140, nullable=true, options={"default"="Company"})
+     * @ORM\Column(name="parentfield", type="string", length=140, nullable=true)
      */
-    private ?string $supplierType = 'Company';
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="allow_purchase_invoice_creation_without_purchase_order", type="integer", nullable=false)
-     */
-    private int $allowPurchaseInvoiceCreationWithoutPurchaseOrder = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="allow_purchase_invoice_creation_without_purchase_receipt", type="integer", nullable=false)
-     */
-    private int $allowPurchaseInvoiceCreationWithoutPurchaseReceipt = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="disabled", type="integer", nullable=false)
-     */
-    private int $disabled = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="warn_rfqs", type="integer", nullable=false)
-     */
-    private int $warnRfqs = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="warn_pos", type="integer", nullable=false)
-     */
-    private int $warnPos = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="prevent_rfqs", type="integer", nullable=false)
-     */
-    private int $preventRfqs = 0;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="prevent_pos", type="integer", nullable=false)
-     */
-    private int $preventPos = 0;
+    private ?string $parentfield;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="default_currency", type="string", length=140, nullable=true)
+     * @ORM\Column(name="parenttype", type="string", length=140, nullable=true)
      */
-    private ?string $defaultCurrency;
+    private ?string $parenttype;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="default_price_list", type="string", length=140, nullable=true)
+     * @return int
      */
-    private ?string $defaultPriceList;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="payment_terms", type="string", length=140, nullable=true)
-     */
-    private ?string $paymentTerms;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="on_hold", type="integer", nullable=false)
-     */
-    private int $onHold = 0;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="hold_type", type="string", length=140, nullable=true)
-     */
-    private ?string $holdType;
-
-    /**
-     * @var DateTimeInterface|null
-     *
-     * @ORM\Column(name="release_date", type="date", nullable=true)
-     */
-    private ?DateTimeInterface $releaseDate;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="website", type="string", length=140, nullable=true)
-     */
-    private ?string $website;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="supplier_details", type="text", length=65535, nullable=true)
-     */
-    private ?string $supplierDetails;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="language", type="string", length=140, nullable=true)
-     */
-    private ?string $language;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="is_frozen", type="integer", nullable=false)
-     */
-    private int $isFrozen = 0;
-    //endregion
-
-    //region getter + setter
-    /**
-     * @return string|null
-     */
-    public function getNamingSeries(): ?string
+    public function getSequenceId(): int
     {
-        return $this->namingSeries;
+        return $this->sequenceId;
     }
 
     /**
-     * @param string|null $namingSeries
+     * @param int $sequenceId
      */
-    public function setNamingSeries(?string $namingSeries): void
+    public function setSequenceId(int $sequenceId): void
     {
-        $this->namingSeries = $namingSeries;
+        $this->sequenceId = $sequenceId;
     }
 
     /**
      * @return string|null
      */
-    public function getSupplierName(): ?string
+    public function getOperation(): ?string
     {
-        return $this->supplierName;
+        return $this->operation;
     }
 
     /**
-     * @param string|null $supplierName
+     * @param string|null $operation
      */
-    public function setSupplierName(?string $supplierName): void
+    public function setOperation(?string $operation): void
     {
-        $this->supplierName = $supplierName;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param string|null $country
-     */
-    public function setCountry(?string $country): void
-    {
-        $this->country = $country;
+        $this->operation = $operation;
     }
 
     /**
      * @return string|null
      */
-    public function getDefaultBankAccount(): ?string
+    public function getWorkstation(): ?string
     {
-        return $this->defaultBankAccount;
+        return $this->workstation;
     }
 
     /**
-     * @param string|null $defaultBankAccount
+     * @param string|null $workstation
      */
-    public function setDefaultBankAccount(?string $defaultBankAccount): void
+    public function setWorkstation(?string $workstation): void
     {
-        $this->defaultBankAccount = $defaultBankAccount;
+        $this->workstation = $workstation;
     }
 
     /**
-     * @return string|null
+     * @return float
      */
-    public function getTaxId(): ?string
+    public function getTimeInMins(): float
     {
-        return $this->taxId;
+        return $this->timeInMins;
     }
 
     /**
-     * @param string|null $taxId
+     * @param float $timeInMins
      */
-    public function setTaxId(?string $taxId): void
+    public function setTimeInMins(float $timeInMins): void
     {
-        $this->taxId = $taxId;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTaxCategory(): ?string
-    {
-        return $this->taxCategory;
-    }
-
-    /**
-     * @param string|null $taxCategory
-     */
-    public function setTaxCategory(?string $taxCategory): void
-    {
-        $this->taxCategory = $taxCategory;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTaxWithholdingCategory(): ?string
-    {
-        return $this->taxWithholdingCategory;
-    }
-
-    /**
-     * @param string|null $taxWithholdingCategory
-     */
-    public function setTaxWithholdingCategory(?string $taxWithholdingCategory): void
-    {
-        $this->taxWithholdingCategory = $taxWithholdingCategory;
+        $this->timeInMins = $timeInMins;
     }
 
     /**
      * @return int
      */
-    public function getIsTransporter(): int
+    public function getFixedTime(): int
     {
-        return $this->isTransporter;
+        return $this->fixedTime;
     }
 
     /**
-     * @param int $isTransporter
+     * @param int $fixedTime
      */
-    public function setIsTransporter(int $isTransporter): void
+    public function setFixedTime(int $fixedTime): void
     {
-        $this->isTransporter = $isTransporter;
+        $this->fixedTime = $fixedTime;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHourRate(): float
+    {
+        return $this->hourRate;
+    }
+
+    /**
+     * @param float $hourRate
+     */
+    public function setHourRate(float $hourRate): void
+    {
+        $this->hourRate = $hourRate;
+    }
+
+    /**
+     * @return float
+     */
+    public function getBaseHourRate(): float
+    {
+        return $this->baseHourRate;
+    }
+
+    /**
+     * @param float $baseHourRate
+     */
+    public function setBaseHourRate(float $baseHourRate): void
+    {
+        $this->baseHourRate = $baseHourRate;
+    }
+
+    /**
+     * @return float
+     */
+    public function getOperatingCost(): float
+    {
+        return $this->operatingCost;
+    }
+
+    /**
+     * @param float $operatingCost
+     */
+    public function setOperatingCost(float $operatingCost): void
+    {
+        $this->operatingCost = $operatingCost;
+    }
+
+    /**
+     * @return float
+     */
+    public function getBaseOperatingCost(): float
+    {
+        return $this->baseOperatingCost;
+    }
+
+    /**
+     * @param float $baseOperatingCost
+     */
+    public function setBaseOperatingCost(float $baseOperatingCost): void
+    {
+        $this->baseOperatingCost = $baseOperatingCost;
     }
 
     /**
      * @return int
      */
-    public function getIsInternalSupplier(): int
+    public function getBatchSize(): int
     {
-        return $this->isInternalSupplier;
+        return $this->batchSize;
     }
 
     /**
-     * @param int $isInternalSupplier
+     * @param int $batchSize
      */
-    public function setIsInternalSupplier(int $isInternalSupplier): void
+    public function setBatchSize(int $batchSize): void
     {
-        $this->isInternalSupplier = $isInternalSupplier;
+        $this->batchSize = $batchSize;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSetCostBasedOnBomQty(): int
+    {
+        return $this->setCostBasedOnBomQty;
+    }
+
+    /**
+     * @param int $setCostBasedOnBomQty
+     */
+    public function setSetCostBasedOnBomQty(int $setCostBasedOnBomQty): void
+    {
+        $this->setCostBasedOnBomQty = $setCostBasedOnBomQty;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCostPerUnit(): float
+    {
+        return $this->costPerUnit;
+    }
+
+    /**
+     * @param float $costPerUnit
+     */
+    public function setCostPerUnit(float $costPerUnit): void
+    {
+        $this->costPerUnit = $costPerUnit;
+    }
+
+    /**
+     * @return float
+     */
+    public function getBaseCostPerUnit(): float
+    {
+        return $this->baseCostPerUnit;
+    }
+
+    /**
+     * @param float $baseCostPerUnit
+     */
+    public function setBaseCostPerUnit(float $baseCostPerUnit): void
+    {
+        $this->baseCostPerUnit = $baseCostPerUnit;
     }
 
     /**
      * @return string|null
      */
-    public function getRepresentsCompany(): ?string
+    public function getDescription(): ?string
     {
-        return $this->representsCompany;
+        return $this->description;
     }
 
     /**
-     * @param string|null $representsCompany
+     * @param string|null $description
      */
-    public function setRepresentsCompany(?string $representsCompany): void
+    public function setDescription(?string $description): void
     {
-        $this->representsCompany = $representsCompany;
+        $this->description = $description;
     }
 
     /**
@@ -408,305 +385,50 @@ class BomOperation
     /**
      * @return string|null
      */
-    public function getSupplierGroup(): ?string
+    public function getParent(): ?string
     {
-        return $this->supplierGroup;
+        return $this->parent;
     }
 
     /**
-     * @param string|null $supplierGroup
+     * @param string|null $parent
      */
-    public function setSupplierGroup(?string $supplierGroup): void
+    public function setParent(?string $parent): void
     {
-        $this->supplierGroup = $supplierGroup;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSupplierType(): ?string
-    {
-        return $this->supplierType;
-    }
-
-    /**
-     * @param string|null $supplierType
-     */
-    public function setSupplierType(?string $supplierType): void
-    {
-        $this->supplierType = $supplierType;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAllowPurchaseInvoiceCreationWithoutPurchaseOrder(): int
-    {
-        return $this->allowPurchaseInvoiceCreationWithoutPurchaseOrder;
-    }
-
-    /**
-     * @param int $allowPurchaseInvoiceCreationWithoutPurchaseOrder
-     */
-    public function setAllowPurchaseInvoiceCreationWithoutPurchaseOrder(int $allowPurchaseInvoiceCreationWithoutPurchaseOrder): void
-    {
-        $this->allowPurchaseInvoiceCreationWithoutPurchaseOrder = $allowPurchaseInvoiceCreationWithoutPurchaseOrder;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAllowPurchaseInvoiceCreationWithoutPurchaseReceipt(): int
-    {
-        return $this->allowPurchaseInvoiceCreationWithoutPurchaseReceipt;
-    }
-
-    /**
-     * @param int $allowPurchaseInvoiceCreationWithoutPurchaseReceipt
-     */
-    public function setAllowPurchaseInvoiceCreationWithoutPurchaseReceipt(int $allowPurchaseInvoiceCreationWithoutPurchaseReceipt): void
-    {
-        $this->allowPurchaseInvoiceCreationWithoutPurchaseReceipt = $allowPurchaseInvoiceCreationWithoutPurchaseReceipt;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDisabled(): int
-    {
-        return $this->disabled;
-    }
-
-    /**
-     * @param int $disabled
-     */
-    public function setDisabled(int $disabled): void
-    {
-        $this->disabled = $disabled;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWarnRfqs(): int
-    {
-        return $this->warnRfqs;
-    }
-
-    /**
-     * @param int $warnRfqs
-     */
-    public function setWarnRfqs(int $warnRfqs): void
-    {
-        $this->warnRfqs = $warnRfqs;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWarnPos(): int
-    {
-        return $this->warnPos;
-    }
-
-    /**
-     * @param int $warnPos
-     */
-    public function setWarnPos(int $warnPos): void
-    {
-        $this->warnPos = $warnPos;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPreventRfqs(): int
-    {
-        return $this->preventRfqs;
-    }
-
-    /**
-     * @param int $preventRfqs
-     */
-    public function setPreventRfqs(int $preventRfqs): void
-    {
-        $this->preventRfqs = $preventRfqs;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPreventPos(): int
-    {
-        return $this->preventPos;
-    }
-
-    /**
-     * @param int $preventPos
-     */
-    public function setPreventPos(int $preventPos): void
-    {
-        $this->preventPos = $preventPos;
+        $this->parent = $parent;
     }
 
     /**
      * @return string|null
      */
-    public function getDefaultCurrency(): ?string
+    public function getParentfield(): ?string
     {
-        return $this->defaultCurrency;
+        return $this->parentfield;
     }
 
     /**
-     * @param string|null $defaultCurrency
+     * @param string|null $parentfield
      */
-    public function setDefaultCurrency(?string $defaultCurrency): void
+    public function setParentfield(?string $parentfield): void
     {
-        $this->defaultCurrency = $defaultCurrency;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDefaultPriceList(): ?string
-    {
-        return $this->defaultPriceList;
-    }
-
-    /**
-     * @param string|null $defaultPriceList
-     */
-    public function setDefaultPriceList(?string $defaultPriceList): void
-    {
-        $this->defaultPriceList = $defaultPriceList;
+        $this->parentfield = $parentfield;
     }
 
     /**
      * @return string|null
      */
-    public function getPaymentTerms(): ?string
+    public function getParenttype(): ?string
     {
-        return $this->paymentTerms;
+        return $this->parenttype;
     }
 
     /**
-     * @param string|null $paymentTerms
+     * @param string|null $parenttype
      */
-    public function setPaymentTerms(?string $paymentTerms): void
+    public function setParenttype(?string $parenttype): void
     {
-        $this->paymentTerms = $paymentTerms;
+        $this->parenttype = $parenttype;
     }
 
-    /**
-     * @return int
-     */
-    public function getOnHold(): int
-    {
-        return $this->onHold;
-    }
 
-    /**
-     * @param int $onHold
-     */
-    public function setOnHold(int $onHold): void
-    {
-        $this->onHold = $onHold;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getHoldType(): ?string
-    {
-        return $this->holdType;
-    }
-
-    /**
-     * @param string|null $holdType
-     */
-    public function setHoldType(?string $holdType): void
-    {
-        $this->holdType = $holdType;
-    }
-
-    /**
-     * @return DateTimeInterface|null
-     */
-    public function getReleaseDate(): ?DateTimeInterface
-    {
-        return $this->releaseDate;
-    }
-
-    /**
-     * @param DateTimeInterface|null $releaseDate
-     */
-    public function setReleaseDate(?DateTimeInterface $releaseDate): void
-    {
-        $this->releaseDate = $releaseDate;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getWebsite(): ?string
-    {
-        return $this->website;
-    }
-
-    /**
-     * @param string|null $website
-     */
-    public function setWebsite(?string $website): void
-    {
-        $this->website = $website;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSupplierDetails(): ?string
-    {
-        return $this->supplierDetails;
-    }
-
-    /**
-     * @param string|null $supplierDetails
-     */
-    public function setSupplierDetails(?string $supplierDetails): void
-    {
-        $this->supplierDetails = $supplierDetails;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage(?string $language): void
-    {
-        $this->language = $language;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIsFrozen(): int
-    {
-        return $this->isFrozen;
-    }
-
-    /**
-     * @param int $isFrozen
-     */
-    public function setIsFrozen(int $isFrozen): void
-    {
-        $this->isFrozen = $isFrozen;
-    }
-    //endregion
 }
