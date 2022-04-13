@@ -9,7 +9,7 @@ use Miq\ErpnextApi\Traits\HeadTrait;
 /**
  * TabbomOperation
  *
- * @ORM\Table(name="tabBOM Operation", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"})})
+ * @ORM\Table(name=" `tabBOM Operation` ", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="parent", columns={"parent"})})
  * @ORM\Entity
  */
 class BomOperation
