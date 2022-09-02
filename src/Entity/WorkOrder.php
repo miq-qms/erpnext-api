@@ -1,67 +1,20 @@
 <?php
 
-namespace App\Entity;
+namespace Miq\ErpnextApi\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Miq\ErpnextApi\Traits\DefaultTrait;
 
 /**
  * TabworkOrder
  *
- * @ORM\Table(name="tabWork Order", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="status", columns={"status"})})
+ * @ORM\Table(name=" `tabWork Order` ", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="status", columns={"status"})})
  * @ORM\Entity
  */
-class TabworkOrder
+class WorkOrder
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=140, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $name;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="creation", type="datetime", nullable=true)
-     */
-    private $creation;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=true)
-     */
-    private $modified;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="modified_by", type="string", length=140, nullable=true)
-     */
-    private $modifiedBy;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="owner", type="string", length=140, nullable=true)
-     */
-    private $owner;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="docstatus", type="integer", nullable=false)
-     */
-    private $docstatus = '0';
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idx", type="integer", nullable=false)
-     */
-    private $idx = '0';
+    use DefaultTrait;
 
     /**
      * @var string|null
@@ -113,32 +66,32 @@ class TabworkOrder
     private $company;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"="1.000000000"})
+     * @ORM\Column(name="qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"=1.000000000})
      */
-    private $qty = '1.000000000';
+    private $qty = 1.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="material_transferred_for_manufacturing", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="material_transferred_for_manufacturing", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $materialTransferredForManufacturing = '0.000000000';
+    private $materialTransferredForManufacturing = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="produced_qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="produced_qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $producedQty = '0.000000000';
+    private $producedQty = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="process_loss_qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="process_loss_qty", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $processLossQty = '0.000000000';
+    private $processLossQty = 0.000000000;
 
     /**
      * @var string|null
@@ -159,14 +112,14 @@ class TabworkOrder
      *
      * @ORM\Column(name="has_serial_no", type="integer", nullable=false)
      */
-    private $hasSerialNo = '0';
+    private $hasSerialNo = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="has_batch_no", type="integer", nullable=false)
      */
-    private $hasBatchNo = '0';
+    private $hasBatchNo = 0;
 
     /**
      * @var string|null
@@ -176,18 +129,18 @@ class TabworkOrder
     private $serialNo;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="batch_size", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="batch_size", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $batchSize = '0.000000000';
+    private $batchSize = 0.000000000;
 
     /**
      * @var int
      *
      * @ORM\Column(name="allow_alternative_item", type="integer", nullable=false)
      */
-    private $allowAlternativeItem = '0';
+    private $allowAlternativeItem = 0;
 
     /**
      * @var int
@@ -201,14 +154,14 @@ class TabworkOrder
      *
      * @ORM\Column(name="skip_transfer", type="integer", nullable=false)
      */
-    private $skipTransfer = '0';
+    private $skipTransfer = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="from_wip_warehouse", type="integer", nullable=false)
      */
-    private $fromWipWarehouse = '0';
+    private $fromWipWarehouse = 0;
 
     /**
      * @var int
@@ -246,46 +199,46 @@ class TabworkOrder
     private $scrapWarehouse;
 
     /**
-     * @var \DateTime|null
+     *@var DateTimeInterface|null
      *
      * @ORM\Column(name="planned_start_date", type="datetime", nullable=true)
      */
     private $plannedStartDate;
 
     /**
-     * @var \DateTime|null
+     *@var DateTimeInterface|null
      *
      * @ORM\Column(name="planned_end_date", type="datetime", nullable=true)
      */
     private $plannedEndDate;
 
     /**
-     * @var \DateTime|null
+     *@var DateTimeInterface|null
      *
      * @ORM\Column(name="expected_delivery_date", type="date", nullable=true)
      */
     private $expectedDeliveryDate;
 
     /**
-     * @var \DateTime|null
+     *@var DateTimeInterface|null
      *
      * @ORM\Column(name="actual_start_date", type="datetime", nullable=true)
      */
     private $actualStartDate;
 
     /**
-     * @var \DateTime|null
+     *@var DateTimeInterface|null
      *
      * @ORM\Column(name="actual_end_date", type="datetime", nullable=true)
      */
     private $actualEndDate;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="lead_time", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="lead_time", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $leadTime = '0.000000000';
+    private $leadTime = 0.000000000;
 
     /**
      * @var string|null
@@ -295,39 +248,39 @@ class TabworkOrder
     private $transferMaterialAgainst;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="planned_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="planned_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $plannedOperatingCost = '0.000000000';
+    private $plannedOperatingCost = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="actual_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="actual_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $actualOperatingCost = '0.000000000';
+    private $actualOperatingCost = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="additional_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="additional_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $additionalOperatingCost = '0.000000000';
+    private $additionalOperatingCost = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="corrective_operation_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="corrective_operation_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $correctiveOperationCost = '0.000000000';
+    private $correctiveOperationCost = 0.000000000;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="total_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"="0.000000000"})
+     * @ORM\Column(name="total_operating_cost", type="decimal", precision=21, scale=9, nullable=false, options={"default"=0.000000000})
      */
-    private $totalOperatingCost = '0.000000000';
+    private $totalOperatingCost = 0.000000000;
 
     /**
      * @var string|null
@@ -398,34 +351,6 @@ class TabworkOrder
      * @ORM\Column(name="amended_from", type="string", length=140, nullable=true)
      */
     private $amendedFrom;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_user_tags", type="text", length=65535, nullable=true)
-     */
-    private $userTags;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_comments", type="text", length=65535, nullable=true)
-     */
-    private $comments;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_assign", type="text", length=65535, nullable=true)
-     */
-    private $assign;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_liked_by", type="text", length=65535, nullable=true)
-     */
-    private $likedBy;
 
     /**
      * @var string|null
