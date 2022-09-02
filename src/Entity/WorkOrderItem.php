@@ -1,67 +1,20 @@
 <?php
 
-namespace App\Entity;
+namespace Miq\ErpnextApi\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Miq\ErpnextApi\Traits\DefaultTrait;
 
 /**
  * TabworkOrderItem
  *
- * @ORM\Table(name="tabWork Order Item", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="item_code_source_warehouse_index", columns={"item_code", "source_warehouse"}), @ORM\Index(name="parent", columns={"parent"})})
+ * @ORM\Table(name=" `tabWork Order Item` ", indexes={@ORM\Index(name="modified", columns={"modified"}), @ORM\Index(name="item_code_source_warehouse_index", columns={"item_code", "source_warehouse"}), @ORM\Index(name="parent", columns={"parent"})})
  * @ORM\Entity
  */
-class TabworkOrderItem
+class WorkOrderItem
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=140, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $name;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="creation", type="datetime", nullable=true)
-     */
-    private $creation;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=true)
-     */
-    private $modified;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="modified_by", type="string", length=140, nullable=true)
-     */
-    private $modifiedBy;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="owner", type="string", length=140, nullable=true)
-     */
-    private $owner;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="docstatus", type="integer", nullable=false)
-     */
-    private $docstatus = '0';
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idx", type="integer", nullable=false)
-     */
-    private $idx = '0';
+  use DefaultTrait;
 
     /**
      * @var string|null
